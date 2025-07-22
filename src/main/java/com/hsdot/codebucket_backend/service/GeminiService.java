@@ -1,12 +1,10 @@
 package com.hsdot.codebucket_backend.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.genai.Client;
 import com.google.genai.types.GenerateContentConfig;
 import com.google.genai.types.GenerateContentResponse;
-import com.hsdot.codebucket_backend.model.ProblemResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -37,8 +35,6 @@ public class GeminiService {
         GenerateContentResponse response = client.models.generateContent("gemini-2.0-flash-001", link+prompt, config);
 
         try{
-            ObjectMapper mapper = new ObjectMapper();
-//            return mapper.readValue(response.text(), ProblemResponse.class);
             return response.text();
         }catch (Exception e){
             throw new RuntimeException("Failed to fetch the response");
