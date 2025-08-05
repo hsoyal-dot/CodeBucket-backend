@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class GeminiController {
 
-    String prompt = " Analyze this LeetCode problem and fill in the values for title, time complexity, space complexity, explanation, and approach.";
+    String prompt = " Analyze the following LeetCode problem and return only the following fields: Title, Time Complexity (Big-O), Space Complexity (Big-O), Approach (short summary of the method or algorithm used), Explanation (step-by-step beginner-friendly explanation), and Problem Tags (a list of related concepts like “array”, “two-pointer”, etc.). Respond in a clean, labeled format with no extra commentary or conversation.";
     private final GeminiService gService;
     @PostMapping("/ask")
     public String askGeminiAPI(@RequestBody ProblemRequest req) {
